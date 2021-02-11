@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+    {% if notfound %}
+        <h3>{{ notfound }}</h3>
+    {% else %}
+
+        {% if crypto.Response %}
+            Sorry, {{ quote }} doesn't exist. Please Try again..
+        {% endif %}
+
+        {% for key,value in crypto.DISPLAY.items %}
+
+             <div class="bg-light p-5 rounded-lg m-3">
+                 <h1 class="display-4">{{ key }}</h1>
+                 <strong>Price</strong>: {{ value.CHF.PRICE }}<br/>
+                 <strong>Day High</strong>: {{ value.CHF.HIGHDAY }}<br/>
+                 <strong>Day Low</strong>: {{ value.CHF.LOWDAY }}<br/>
+                 <strong>Marekt Cap</strong>: {{ value.CHF.MKTCAP }}<br/>
+             </div>
+
+        {% endfor %}
+
+
+    {% endif %}
+
+    <br><br>
+
+{% endblock %}
+
+
+
